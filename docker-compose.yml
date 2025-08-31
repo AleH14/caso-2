@@ -1,0 +1,28 @@
+version: "3.9"
+
+services:
+  ca:
+    build: ./ca
+    container_name: ca_server
+    volumes:
+      - ./certs:/certs
+    networks:
+      - labnet
+
+  web:
+    build: ./server-https
+    container_name: web_server
+    depends_on:
+      - ca
+    environment:
+      SERVER_NAME: server.local
+    volumes:
+      - ./certs:/etc/ssl/server
+    ports:
+      - "8443:443"
+    networks:
+      - labnet
+
+networks:
+  labnet:
+    driver: bridge

@@ -1,0 +1,21 @@
+
+[ req ]
+default_bits       = 2048
+prompt             = no
+distinguished_name = dn
+req_extensions     = v3_req
+
+[ dn ]
+C  = SV
+ST = San Salvador
+L  = San Salvador
+O  = MiEmpresa
+OU = IT
+CN = localhost
+
+[ v3_req ]
+subjectAltName = @alt_names
+
+[ alt_names ]
+DNS.1 = localhost
+DNS.2 = server.local
