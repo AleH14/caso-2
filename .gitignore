@@ -5,13 +5,20 @@
 .docker/
 
 # ===========================================
-# Certificados y Claves (CRÍTICO - NO SUBIR)
+# Certificados y Claves (CRÍTICO - NO SUBIR)  
 # ===========================================
 # Directorio completo de certificados
 certs/
 !certs/.gitkeep
 
-# Claves privadas y certificados
+# Claves PGP (SÚPER CRÍTICO - NO SUBIR)
+pgp_keys/alice/alice_private.asc
+pgp_keys/bob/bob_private.asc
+pgp_keys/*/KEY_INFO.txt
+*.asc
+*.gpg
+
+# Claves privadas y certificados SSL
 *.key
 *.crt
 *.csr

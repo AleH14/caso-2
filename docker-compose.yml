@@ -10,7 +10,7 @@ services:
       - labnet
 
   web:
-    build: ./server-https
+    build: ./Server-HTTPS
     container_name: web_server
     depends_on:
       - ca
@@ -22,6 +22,31 @@ services:
       - "8443:443"
     networks:
       - labnet
+
+  mail:
+    build: ./server-PGP
+    container_name: mail_server
+    hostname: mail
+    domainname: server.local
+    env_file:
+      - ./server-PGP/mailserver.env
+    networks:
+      - labnet
+    ports:
+      - "25:25"     # SMTP
+      - "465:465"   # SMTPS
+      - "587:587"   # Submission STARTTLS
+      - "143:143"   # IMAP
+      - "993:993"   # IMAPS
+    volumes:
+      - ./maildata:/var/mail
+      - ./maillogs:/var/log/mail
+      - ./server-PGP/config:/tmp/docker-mailserver
+      - ./certs:/etc/letsencrypt/live/server.local:ro
+    cap_add:
+      - NET_ADMIN
+      - SYS_PTRACE
+    restart: unless-stopped
 
 networks:
   labnet:

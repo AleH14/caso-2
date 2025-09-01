@@ -1,0 +1,4 @@
+# Aliases for mail server
+postmaster@server.local alice@server.local
+admin@server.local alice@server.local
+abuse@server.local alice@server.local

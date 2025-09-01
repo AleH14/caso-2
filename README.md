@@ -63,12 +63,43 @@ docker logs web_server
 - **Monitoreo**: Automático de CSRs
 
 ### 3. Servidor de Correo
-- **SMTP**: Puerto 25, 587, 465
-- **IMAP**: Puerto 143, 993
-- **Usuarios**: Definidos en variable USERS
-- **Sin SSL**: Configuración simplificada
+- **SMTP**: Puerto 25, 587 (STARTTLS), 465 (SSL/TLS)
+- **IMAP**: Puerto 143 (STARTTLS), 993 (SSL/TLS)
+- **Usuarios disponibles**:
+  - `alice@server.local` - Password: `ClaveSegura1!`
+  - `bob@server.local` - Password: `ClaveSegura2!`  
+  - `test@server.local` - Password: `password123`
+- **Dominio**: server.local
+- **Hostname**: mail.server.local
 
-## 🔧 Configuración
+## � Configuración de Thunderbird
+
+Para configurar Thunderbird con el servidor de correo:
+
+### Configuración de Cuenta
+1. **Nombre**: Alice o Bob (según el usuario)
+2. **Email**: `alice@server.local` o `bob@server.local` o `test@server.local`
+3. **Contraseña**: `ClaveSegura1!` o `ClaveSegura2!` o `password123`
+
+### Configuración del Servidor
+**Servidor de entrada (IMAP):**
+- Servidor: `localhost` o `127.0.0.1`
+- Puerto: `993` (SSL/TLS) o `143` (STARTTLS)
+- Seguridad: SSL/TLS o STARTTLS
+- Método de autenticación: Contraseña normal
+
+**Servidor de salida (SMTP):**
+- Servidor: `localhost` o `127.0.0.1`
+- Puerto: `587` (STARTTLS) o `465` (SSL/TLS)
+- Seguridad: STARTTLS o SSL/TLS
+- Método de autenticación: Contraseña normal
+
+### ⚠️ Certificados
+- El servidor usa certificados autofirmados
+- Thunderbird mostrará advertencias de seguridad
+- Hacer clic en "Confirmar excepción de seguridad" para continuar
+
+## �🔧 Configuración
 
 ### Variables de Entorno
 ```env

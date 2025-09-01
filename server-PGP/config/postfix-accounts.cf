@@ -1,0 +1,5 @@
+# Formato: email|password_hash|{PLAIN}|userdb_quota_rule=*:storage=1G
+# Para generar hash: docker run --rm -it mailserver/docker-mailserver:latest setup email add test@domain.com password123
+
+alice@server.local|{PLAIN}ClaveSegura1!|
+bob@server.local|{PLAIN}ClaveSegura2!|
