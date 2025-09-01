@@ -10,7 +10,7 @@ openssl genrsa -out /certs/mail-server.key 2048
 openssl req -new \
   -key /certs/mail-server.key \
   -out /certs/mail-server.csr \
-  -subj "/C=MX/ST=Estado/L=Ciudad/O=MiEmpresa/OU=Mail/CN=s2.miempresa.local"
+  -subj "/C=SV/ST=San Salvador/L=San Salvador/O=Local Lab/OU=Mail/CN=mail.server.local"
 
 echo "[CA] Firmando certificado para servidor de correo..."
 openssl ca -batch \
