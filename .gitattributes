@@ -1,0 +1,26 @@
+# Configuración para manejo de terminaciones de línea
+# Los archivos de script bash siempre deben tener LF (Unix)
+*.sh text eol=lf
+
+# Los archivos de configuración también deben usar LF
+*.cnf text eol=lf
+*.env text eol=lf
+
+# Los archivos de Docker siempre LF
+Dockerfile text eol=lf
+docker-compose.yml text eol=lf
+
+# Los archivos de texto general usan configuración por defecto del sistema
+*.md text
+*.txt text
+*.json text
+*.yml text
+*.yaml text
+
+# Los archivos binarios no deben ser modificados
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary

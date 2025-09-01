@@ -1,12 +1,35 @@
-# 🚀 Proyecto de Infraestructura Docker - Caso 2
+# Laboratorio de Certificados SSL - Caso 2
 
-Este proyecto implementa una infraestructura completa con tres servicios interconectados que utilizan certificados SSL/TLS generados automáticamente:
+## 🚀 Setup Rápido (Nuevo!)
 
-- **🔐 Autoridad Certificadora (CA)** - Genera y firma certificados SSL/TLS automáticamente
-- **🌐 Servidor Web HTTPS** - Nginx con certificados SSL generados por la CA
-- **📧 Servidor de Correo** - Docker Mailserver con soporte SSL/TLS completo
+### Para Windows:
+```powershell
+.\setup.ps1
+```
 
-## 🏗️ Arquitectura del Proyecto
+Este script automatiza completamente el proceso de configuración.
+
+## 🛠 Configuración Manual (si es necesario)
+
+Solo usa estos comandos si el script automático falla:
+
+```powershell
+# 1. Limpiar entorno
+docker compose down
+docker system prune -a --volumes -f
+if (Test-Path "certs") { Remove-Item -Recurse -Force "certs" }
+New-Item -ItemType Directory -Force -Path "certs"
+
+# 2. Construir y ejecutar en orden
+docker compose build ca
+docker compose up -d ca
+# Esperar 5 segundos
+docker compose build web  
+docker compose up -d web
+# Esperar 10 segundos
+docker compose build mail
+docker compose up -d mail
+```
 
 ```
 caso-2/

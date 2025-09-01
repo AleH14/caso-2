@@ -151,3 +151,9 @@ venv/
 # ===========================================
 docs/build/
 site/
+
+# ===========================================
+# Scripts de setup (mantener en repo)
+# ===========================================
+# Los scripts setup.ps1 y cleanup.ps1 SÍ deben estar en el repo
+# para que funcionen en todas las máquinas
